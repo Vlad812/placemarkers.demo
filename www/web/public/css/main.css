@@ -1,0 +1,65 @@
+
+header {
+
+    min-height: 100px;
+
+}
+
+.map {
+
+    height: 500px;
+}
+
+.row {
+
+    margin-bottom: 15px;
+
+}
+
+.btn {
+
+    font-size: 15px;
+    background-color: rgba(236, 206, 155, 0.28);
+
+}
+
+.btn:hover {
+
+    background-color: rgba(255, 216, 164, 0.81);
+
+}
+
+.bg-row, #resultTable tbody tr:hover {
+
+    background-color: rgba(255, 216, 164, 0.81);
+
+}
+
+.bg-new-row {
+    background-color: rgba(21, 170, 28, 0.27);
+
+}
+
+.action-edit, .action-del {
+
+    cursor: pointer;
+
+}
+
+.edit-bg {
+    background-color: rgba(78, 137, 132, 0.27);
+
+}
+
+.pagination nav a, .pagination nav {
+
+    padding: 5px;
+    font-size: 16px;
+
+}
+
+.pagination nav span {
+
+    margin-left: 5px;
+
+}

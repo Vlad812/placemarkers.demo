@@ -1,0 +1,50 @@
+{%  extends 'AppBundle::base.html.twig' %}
+
+{% block title %} Результат Поиска Меток {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12 col-md-6">
+            <table id="resultTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Метка</th>
+                        <th>Расстояние / км </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for val in res %}
+                        <tr data-place-id = "{{ val.id }}">
+                            <td>{{  val.name }}</td>
+                            <td>{{  val.dist|round( 4, 'floor') }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div id="resultMap" class="col-xs-12 col-md-6 map" data-type-map = "result"></div>
+    </div>
+
+    <script>
+        var searchArea = {
+            'lat' : {{  area.lat }},
+            'lon' : {{  area.lon }},
+            'radius' : {{  area.radius }}
+        };
+
+        var resJson = {
+
+            "type": "FeatureCollection",
+
+            "features": [
+                            {% for val in res %}
+                                {
+                                    "type": "Feature", "id": {{  val.id }},
+                                    "geometry": {"type": "Point", "coordinates": [ {{  val.lat }}, {{ val.lon }} ] },
+                                    "properties": {"balloonContent": "Содержимое балуна", "clusterCaption": "Еще одна метка", "hintContent": "{{ val.name }}" }
+                                },
+                            {% endfor %}
+            ]
+        };
+    </script>
+{% endblock %}

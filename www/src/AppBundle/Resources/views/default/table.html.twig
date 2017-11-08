@@ -1,0 +1,27 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block table %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Метка</th>
+                <th>Широта</th>
+                <th>Долгота</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        {% for  val in placeMarksList %}
+            <tr data-id = "{{ val.getId() }}">
+                <td class = "name-placemark">{{ val.getName() }}</td>
+                <td class = "lat-placemark">{{ val.getLat() }}</td>
+                <td class = "lon-placemark">{{ val.getLon() }}</td>
+                <td class="action-edit"> Edit </td>
+                <td class="action-del" >Del</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div class = "pagination">
+        {{ pagination|raw }}
+    </div>
+{% endblock %}
